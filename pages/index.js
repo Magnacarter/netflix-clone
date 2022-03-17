@@ -5,26 +5,14 @@ import Banner from '../components/Banner/banner'
 import Navbar from '../components/Nav/navbar'
 import SectionCards from '../components/SectionCard/section-card'
 import Card from '../components/Card/card'
+import { getVideos } from '../lib/videos'
 
-export default function Home() {
-  const disneyVideos = [
-    {
-      imgUrl: '/static/clifford.jpeg',
-      size: 'large',
-      title: 'Clifford The Big Dog'
-    },
-    {
-      imgUrl: '/static/clifford.jpeg',
-      size: 'large',
-      title: 'Clifford The Big Dog'
-    },
-    {
-      imgUrl: '/static/clifford.jpeg',
-      size: 'large',
-      title: 'Clifford The Big Dog'
-    }
-  ];
+export async function getServerSideProps() {
+  const disneyVideos = await getVideos();
+  return { props: {disneyVideos} };
+}
 
+export default function Home({disneyVideos}) {
   console.log({disneyVideos});
 
   return (

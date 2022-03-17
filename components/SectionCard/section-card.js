@@ -2,7 +2,7 @@ import styles from './section.module.css'
 import Card from '../Card/card'
 
 const SectionCards = (props) => {
-    const { title, videos } = props;
+    const { title, videos = [] } = props;
 
     return (
         <section className={styles.container}>
@@ -10,14 +10,12 @@ const SectionCards = (props) => {
             <div className={styles.cardWrapper}>
                 {videos.map((video, idx) => {
                     return (
-
                         <Card
                             id={idx}
                             imgUrl={video.imgUrl}
                             size={video.size}
                             title={video.title}
                         />
-
                     )
                 })}
             </div>
